@@ -1,1 +1,1 @@
-This implements the second puzzle in the May 15 2020 538 Riddler - <fivethirtyeight.com/features/can-you-find-the-best-dungeons-dragons-strategy/>
+This implements the second puzzle in the May 15 2020 538 Riddler - <fivethirtyeight.com/features/can-you-find-the-best-dungeons-dragons-strategy>
