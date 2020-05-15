@@ -31,6 +31,16 @@ function_of <- function(row_rolls, col_rolls, f) {
   mat
 }
 
+#extra credit functions
+
+pct_above_n <- function(n, vec) {
+  sum(vec>n)/length(vec)
+}
+
+pct_above_n_s <- function(max_n, vec) {
+  purrr::map_dbl(1:max_n, ~pct_above_n(., vec))
+}
+
 #code
 
 roll_info <- function(d) {
@@ -49,10 +59,18 @@ roll_info <- function(d) {
     disadvantage_of_advantage = mean(disadvantage_of_advantage)
   )
   
-  list(expected_values = expected_values)
+  #extra_credit
+  max_difficulty = d - 1;
+  win_table = tibble(
+    to_best = 1:max_difficulty,
+    base = pct_above_n_s(max_difficulty, base_rolls),
+    advantage_of_disadvantage = pct_above_n_s(max_difficulty, advantage_of_disadvantage),
+    disadvantage_of_advantage = pct_above_n_s(max_difficulty, disadvantage_of_advantage)
+    )
+  
+  list(expected_values = expected_values, win_table = win_table)
 }
 
 roll_info(d = 3)
 roll_info(d = 20)
-
 
