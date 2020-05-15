@@ -43,6 +43,19 @@ make_rolls <- function(d = 20, n = 10000) {
   )
 }
 
-rolls <- make_rolls(d = 3, n = 100000)
+rolls <- make_rolls(d = 20, n = 100000)
 
 map(rolls, mean)
+
+# a typical result - disadvantage+of+advantage is the preferred result
+# > rolls <- make_rolls(d = 20, n = 100000)
+# 
+# > map(rolls, mean)
+# $plain
+# [1] 10.52271
+# 
+# $disadvantage_of_advantage
+# [1] 11.18138
+# 
+# $advantage_of_disadvantage
+# [1] 9.84981
