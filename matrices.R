@@ -1,4 +1,21 @@
-d3 <- 1:3
+#define functions
+d <- function(n) {1:n}
+
+advantage_of <- function(rolls) {
+  max_of(rolls, rolls)
+}
+
+max_of <- function(row_rolls, col_rolls) {
+  function_of(row_rolls, col_rolls, max)
+}
+
+disadvantage_of <- function(rolls) {
+  min_of(rolls, rolls)
+}
+
+min_of <- function(row_rolls, col_rolls) {
+  function_of(row_rolls, col_rolls, min)
+}
 
 #function of compares one vector of rolls with another via some comparison function f
 function_of <- function(row_rolls, col_rolls, f) {
@@ -14,16 +31,13 @@ function_of <- function(row_rolls, col_rolls, f) {
   mat
 }
 
-max_of <- function(row_rolls, col_rolls) {
-  function_of(row_rolls, col_rolls, max)
-}
+#code
 
-advantage <- function(rolls) {
-  max_of(rolls, rolls)
-}
 
-mat <- advantage(d3)
-
-mat[1, 1]
-mat[1, 2]
-mat
+base_rolls <- d(3)
+rolls_expected <- mean(base_rolls)
+advantage_of_disadvantage <- advantage_of( disadvantage_of(base_rolls) )
+advantage_of_disadvantage
+disadvantage_of_advantage <- disadvantage_of(advantage_of(base_rolls))
+mean(advantage_of_disadvantage)
+mean(disadvantage_of_advantage)
