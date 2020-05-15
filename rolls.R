@@ -19,6 +19,10 @@ disadvantage_of_advantage <- function(d = 20) {
   with_disadvantage(d = d, roll_f = with_advantage)
 }
 
+advantage_of_disadvantage <- function(d = 20) {
+  with_advantage(d = d, roll_f = with_disadvantage)
+}
+
 disadvantage_of_advantage()
 
 with_advantage()
@@ -32,12 +36,13 @@ map_int_f <- function(f, d, n) {
 make_rolls <- function(d = 20, n = 10000) {
   tibble(
     plain = map_int_f(roll, d, n),
-    advantage = map_int_f(with_advantage, d, n),
-    disadvantage = map_int_f(with_disadvantage, d, n),
-    disadvantage_of_advantage = map_int_f(disadvantage_of_advantage, d, n)
+    # advantage = map_int_f(with_advantage, d, n),
+    # disadvantage = map_int_f(with_disadvantage, d, n),
+    disadvantage_of_advantage = map_int_f(disadvantage_of_advantage, d, n),
+    advantage_of_disadvantage = map_int_f(advantage_of_disadvantage, d, n)
   )
 }
 
-rolls <- make_rolls(100000)
+rolls <- make_rolls(d = 3, n = 100000)
 
 map(rolls, mean)
